@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+    <div formArrayName="lessons">
+        <h2>Lessons</h2>
+        <button type="button" (click)="addLesson()">+ Add another lesson</button>
+        <div *ngFor="let lesson of lessons.controls; let i=index">
+            <!-- The repeated alias template -->
+            <label for="lesson-{{ i }}">Lesson:</label>
+            <input id="lesson-{{ i }}" type="text" [formControlName]="i">
+            <button type="button" (click)="deleteLesson(i)">Delete</button>
+        </div>
+    </div>
+    <input type="submit" (click)="printConsole()">
+</form>
