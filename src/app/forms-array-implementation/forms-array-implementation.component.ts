@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forms-array-implementation',
@@ -7,27 +7,29 @@ import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./forms-array-implementation.component.css']
 })
 export class FormsArrayImplementationComponent {
-  form = this.fb.group({
-    lessons: this.fb.array([
-      this.fb.control('', Validators.required)
-    ])
+  profileForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: [''],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: ['']
+    })
   });
 
   constructor(private fb: FormBuilder) { }
 
-  get lessons() {
-    return this.form.get('lessons') as FormArray;
+  onSubmit() {
+    console.log(this.profileForm.value);
   }
 
-  addLesson() {
-    this.lessons.push(this.fb.control('', Validators.required));
-  }
-
-  deleteLesson(lessonIndex: number) {
-    this.lessons.removeAt(lessonIndex);
-  }
-
-  printConsole() {
-    console.log(this.form.value);
+  updateProfile() {
+    this.profileForm.patchValue({
+      firstName: 'Ramlal',
+      address: {
+        street: 'Vakhariya Road'
+      }
+    });
   }
 }
