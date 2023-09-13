@@ -38,4 +38,8 @@ export class HeroDetailComponent implements OnInit {
         .subscribe(() => this.goBack());
     }
   }
+
+  dummyAgain(): void {
+    console.log("Hello there...");
+  }
 }
