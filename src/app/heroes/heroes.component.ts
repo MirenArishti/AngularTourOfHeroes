@@ -36,6 +36,6 @@ export class HeroesComponent implements OnInit {
   }
 
   dummy(): void {
-    console.log("This is the dummy method for practicing the versioning...");
+    console.log("This is the dummy method for applying patch mechanism for semantic versioning...");
   }
 }
